@@ -1,0 +1,23 @@
+calculadora: calculadora.o suma.o resta.o multiplicacion.o division.o datos.o
+	gcc -o calc calculadora.o suma.o resta.o multiplicacion.o division.o datos.o
+
+calculadora.o:	calculadora.c calculadora.h
+	gcc -c calculadora.c -o calculadora.o
+
+suma.o:	suma.c calculadora.h
+	gcc -c suma.c -o suma.o	
+
+resta.o: resta.c calculadora.h
+	 gcc -c resta.c -o resta.o
+
+multiplicacion.o: multiplicacion.c calculadora.h
+	gcc -c multiplicacion.c -o multiplicacion.o
+
+division.o: division.c calculadora.h
+	gcc -c division.c -o division.o
+
+datos.o: datos.c calculadora.h
+	gcc -c datos.c -o datos.o
+
+clean:
+	rm -f *.o calc

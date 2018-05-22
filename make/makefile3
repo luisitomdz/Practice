@@ -1,0 +1,16 @@
+APP=calc
+CC=gcc
+DEPS=../include/calculadora.h
+CFLAGS=-I ../include/
+ODIR=../obj
+ 
+OBJ=../obj/calculadora.o ../obj/suma.o ../obj/resta.o ../obj/multiplicacion.o ../obj/division.o ../obj/datos.o
+
+calc:   $(OBJ)
+	$(CC) -o $(APP) $(OBJ)
+
+$(ODIR)/%.o:    %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+clean:
+	rm -f calc $(ODIR)/*.o

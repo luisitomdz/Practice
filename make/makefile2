@@ -1,0 +1,27 @@
+CC=gcc
+DEPS=./include/calculadora.h
+CFLAGS=-I ./include/
+
+calculadora: calculadora.o suma.o resta.o multiplicacion.o division.o datos.o
+	$(CC) -o calc calculadora.o suma.o resta.o multiplicacion.o division.o datos.o $(CFLAGS)
+
+calculadora.o:	calculadora.c $(DEPS)
+	$(CC) -c calculadora.c -o calculadora.o $(CFLAGS)
+
+suma.o:	suma.c $(DEPS) 
+	$(CC) -c suma.c -o suma.o $(CFLAGS)
+
+resta.o: resta.c $(DEPS)
+	 $(CC) -c resta.c -o resta.o $(CFLAGS)
+
+multiplicacion.o: multiplicacion.c $(DEPS)
+	$(CC) -c multiplicacion.c -o multiplicacion.o $(CFLAGS)
+
+division.o: division.c $(DEPS) 
+	$(CC) -c division.c -o division.o $(CFLAGS)
+
+datos.o: datos.c $(DEPS)
+	$(CC) -c datos.c -o datos.o $(CFLAGS)
+
+clean:
+	rm -f *.o calc
